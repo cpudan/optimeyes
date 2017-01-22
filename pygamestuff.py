@@ -11,16 +11,34 @@
 import sys, pygame
 from pygame.locals import *
 
+
+
 pygame.init()
-size = width, height = 1700, 700
+size = width, height = 1920, 1080
 white = 255, 255, 255
 screen = pygame.display.set_mode(size)
+screen.fill(white)
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, image_file, location):
+        pygame.sprite.Sprite.__init__(self)  #call Sprite initializer
+        self.image = pygame.image.load(image_file)
+        self.rect = self.image.get_rect()
+        self.rect.left, self.rect.top = location
+        self.draw()
+    def draw(self):
+        self.remove()
+        screen.blit(self.image, self.rect)
+        pygame.display.flip()
+
+BackGround = Background('/home/dan/photos/mockup.png', [0,0])
+screen.blit(BackGround.image, BackGround.rect)
 
 class Crosshair(object):
     def __init__(self, speed = [1, 1], quadratic = True):
         self.quadratic = quadratic
         self.speed = speed
-        self.cross = pygame.image.load('gaussianBlur.png')#pygame.image.load('bmpcrosshair.bmp')
+        self.cross = pygame.image.load('gaussianBlur.png')
         self.crossrect = self.cross.get_rect()
 ##        print self.crossrect.center, "is the center"
 ##        print self.crossrect, "is the rect"
@@ -83,6 +101,7 @@ class Crosshair(object):
 
     def remove(self):
         screen.fill(white)
+        screen.blit(BackGround.image, BackGround.rect)
         pygame.display.flip()
 
     def clearEvents(self):
