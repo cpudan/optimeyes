@@ -1,3 +1,4 @@
+#!/usr/bin/python2
 import cv2
 import numpy as np
 import ClassyVirtualReferencePoint as ClassyVirtualReferencePoint
@@ -14,7 +15,7 @@ import ransac
 # the program will learn the correspondence and start drawing a blue blur
 # where you look. It's important to keep your head still (in position AND angle)
 # or it won't work.
-doTraining = False
+doTraining = True
 
 
 

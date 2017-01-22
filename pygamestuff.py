@@ -31,7 +31,7 @@ class Background(pygame.sprite.Sprite):
         screen.blit(self.image, self.rect)
         pygame.display.flip()
 
-BackGround = Background('/home/dan/photos/mockup.png', [0,0])
+BackGround = Background('mockup1.png', [0,0])
 screen.blit(BackGround.image, BackGround.rect)
 
 class Crosshair(object):
